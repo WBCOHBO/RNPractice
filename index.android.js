@@ -5,31 +5,44 @@
  */
 
 import React, { Component } from 'react';
+// rowHasChange.catch(function() {});
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  ListView
 } from 'react-native';
 
-export default class AwesomeProject extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      titleText: "Bird's Nest",
-      bodyText:'This is not really a bird nest.'
+// ListView
+class MyComponent extends Component {
+  constructor() {
+    super();
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state ={
+      daaSource: ds.cloneWithRows(['row 1', 'row 2']),
     };
   }
+
+  render(){
+    return (
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={(rowData) => <Text>{rowData}</Text>} />
+    );
+  }
+}
+
+// text
+export default class AwesomeProject extends Component {
   render() {
     return (
-      <Text style={styles.baseText}>
-        <Text style={styles.titleText} onPress={this.onPressTitle}>
-          {this.state.titleText}
-        </Text>
-        <Text numberOfLines={5}>
-          {this.state.bodyText}
-        </Text>
-      </Text>
+      <View>
+        <MyComponent text='I love to blink' />
+        <MyComponent text='Yes blinking is so great' />
+        <MyComponent text='Why did they ever take this out of HTML' />
+        <MyComponent text='Look at me look at me look at me' />
+      </View>
     );
   }
 }
@@ -43,5 +56,7 @@ baseText: {
     fontWeight: 'bold',
   },
 });
+
+
 
 AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
