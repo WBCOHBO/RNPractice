@@ -2,24 +2,31 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  Text,
-  TouchableOpacity,
-  Button
+  ListView,
 } from 'react-native';
+import ButtonSample from './ButtonSample';
 
-export default (props) => (
-  <View style={styles.center}>
-    <TouchableOpacity style={styles.button}>
-      <Text style={styles.buttonText}>{props.buttonText}</Text>
-    </TouchableOpacity>
-  </View>
-);
+export default (props) => {
+  const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+  const dataSource = ds.cloneWithRows([
+    'Button1', 'Button2', 'Button3', 'Button4'
+  ]);
+  return (
+    <View style={styles.center}>
+      <ListView
+        dataSource={dataSource}
+        renderRow={(rowData) => <ButtonSample buttonText={rowData} />}
+      />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   center: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingTop: 10,
   },
   button: {
     margin: 20,
