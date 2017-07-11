@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { AppRegistry, FlatList, StyleSheet, Text, View, Image, TouchableOpacity, Button,ListView} from 'react-native';
-import ListViewSrc from './src/ListViewSrc';
+ import ListViewSrc from './src/ListViewSrc';
 
 export default class AwesomeProject extends Component {
   render() {
     return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1 ,backgroundColor:'#ebebeb'}}>
       <ListViewSrc />
-    </View>
+      
+     </View>
     );
   }
 }
