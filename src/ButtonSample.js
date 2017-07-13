@@ -15,7 +15,8 @@ export default (props) => (
       <Image style={{width: 50, height: 50,borderRadius: 30}}
           source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
       />
-      <Text style={styles.buttonText}>{props.buttonText}</Text>
+      <Text style={styles.buttonText}>{props.title}</Text>
+      <Text style={styles.buttonText}>{props.desc}</Text>
       <Image style={{ width: 30, height: 30,top:15,left:380,position: 'absolute',}}
           source={{uri: 'https://cdn2.iconfinder.com/data/icons/flat-and-simple-part-4/128/cross-128.png'}}
       />
@@ -44,12 +45,17 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
    },
-  buttonText: {
+  title: {
     color: 'black',
     fontSize: 20,
     fontWeight: 'bold',
     paddingLeft: 20,
-    //paddingRight:550,
+    // paddingRight:550,
     // backgroundColor:'black',
   },
+  desc:{
+    color: 'black',
+    fontSize: 15,
+    paddingLeft: 20,
+  }
 });
